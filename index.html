@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dott.ssa Sara Trovato — Psicologa Psicoterapeuta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // GA initialization will be done by script.js based on cookie consent
+  </script>
+  <style>
+    /* ─── COOKIE BANNER & MODAL ─── */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(42, 42, 40, 0.97);
+      backdrop-filter: blur(12px);
+      padding: 1.5rem 2rem;
+      border-top: 1px solid rgba(122, 148, 128, 0.3);
+      z-index: 500;
+      animation: slideUp 0.4s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .cookie-banner-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cookie-banner-text { color: rgba(247, 243, 237, 0.9); flex: 1; }
+    .cookie-banner-text h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .cookie-banner-text p { font-size: 0.95rem; line-height: 1.5; }
+
+    .cookie-banner-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+    .cookie-btn {
+      padding: 0.6rem 1.4rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .cookie-btn-primary {
+      background: var(--sage);
+      color: var(--cream);
+    }
+
+    .cookie-btn-primary:hover { background: var(--sage-dk); }
+
+    .cookie-btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(247, 243, 237, 0.3);
+    }
+
+    .cookie-btn-secondary:hover { background: rgba(247, 243, 237, 0.1); }
+
+    .cookie-btn-tertiary {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(247, 243, 237, 0.3);
+    }
+
+    .cookie-btn-tertiary:hover { background: rgba(247, 243, 237, 0.1); }
+
+    .cookie-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 600;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .cookie-modal.show { display: flex; }
+
+    .cookie-modal-content {
+      background: var(--cream);
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .cookie-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(122, 148, 128, 0.15);
+    }
+
+    .cookie-modal-header h2 { font-size: 1.3rem; color: var(--sage-dk); }
+
+    .cookie-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--charcoal);
+      padding: 0;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .cookie-modal-close:hover { opacity: 0.6; }
+
+    .cookie-modal-body {
+      padding: 1.5rem;
+    }
+
+    .cookie-category {
+      margin-bottom: 1.5rem;
+    }
+
+    .cookie-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      cursor: pointer;
+    }
+
+    .cookie-checkbox input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--sage);
+    }
+
+    .cookie-checkbox input[type="checkbox"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .checkbox-label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .checkbox-label strong { color: var(--charcoal); }
+    .checkbox-label small { color: var(--warm-mid); font-size: 0.85rem; }
+
+    .cookie-modal-footer {
+      padding: 1.5rem;
+      border-top: 1px solid rgba(122, 148, 128, 0.15);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .cookie-banner-content { flex-direction: column; align-items: stretch; text-align: center; }
+      .cookie-banner-buttons { justify-content: center; }
+      .cookie-btn { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-name" href="#top">Dott.ssa Sara Trovato</a>
+    <ul class="nav-links">
+      <li><a href="#chi-sono">Chi sono</a></li>
+      <li><a href="#approccio">Approccio</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="top" class="hero" style="padding:0;">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Psicologa · Psicoterapeuta · Torino</p>
+      <h1 class="hero-name">Dott.ssa<br><em>Sara Trovato</em></h1>
+      <p class="hero-title">Psicoterapia Cognitiva ad indirizzo Costruttivista</p>
+      <p class="hero-tagline">Percorsi individuali per adulti, in presenza a Torino e online. Uno spazio sicuro per esplorare, comprendere e cambiare.</p>
+      <div class="hero-cta">
+        <a class="btn btn-whatsapp" href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp
+        </a>
+        <a class="btn btn-email" href="mailto:info@saratrovato.it">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <a class="btn btn-tel" href="tel:+39XXXXXXXXXX">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.82 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Chiama
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <!-- Placeholder visivo: sostituire con <img src="foto.jpg" alt="Sara Trovato" class="hero-photo-placeholder"> -->
+      <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" class="hero-bg-svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E8E2D9"/>
+            <stop offset="100%" stop-color="#D6CFBF"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7A9480" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="#C9A98A" stop-opacity=".15"/>
+          </linearGradient>
+        </defs>
+        <rect width="600" height="800" fill="url(#g1)"/>
+        <circle cx="480" cy="120" r="200" fill="url(#g2)"/>
+        <circle cx="80" cy="650" r="150" fill="url(#g2)" opacity=".6"/>
+        <!-- Linee decorative -->
+        <line x1="0" y1="400" x2="600" y2="400" stroke="#7A9480" stroke-width=".5" stroke-opacity=".2"/>
+        <line x1="300" y1="0" x2="300" y2="800" stroke="#7A9480" stroke-width=".5" stroke-opacity=".1"/>
+        <!-- Cerchio centrale placeholder foto -->
+        <circle cx="300" cy="360" r="160" fill="none" stroke="#7A9480" stroke-width="1" stroke-opacity=".3" stroke-dasharray="4 6"/>
+        <text x="300" y="345" text-anchor="middle" fill="#7A9480" fill-opacity=".6" font-family="DM Sans, sans-serif" font-size="11" font-weight="300" letter-spacing="2">FOTO</text>
+        <text x="300" y="362" text-anchor="middle" fill="#7A9480" fill-opacity=".6" font-family="DM Sans, sans-serif" font-size="11" font-weight="300" letter-spacing="2">PROFILO</text>
+      </svg>
+      <div class="hero-visual-text">
+        «Non vediamo il mondo per com'è, ma per come siamo.»
+      </div>
+    </div>
+  </section>
+
+  <!-- CHI SONO -->
+  <section id="chi-sono">
+    <div class="section-label">Chi sono</div>
+    <div class="chi-sono-grid">
+      <div>
+        <div class="photo-frame">
+          <!-- Sostituire con <img src="ritratto.jpg" alt="Dott.ssa Sara Trovato"> -->
+          <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;aspect-ratio:3/4;display:block;">
+            <defs>
+              <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#EDE8DF"/>
+                <stop offset="100%" stop-color="#D6CFBF"/>
+              </linearGradient>
+            </defs>
+            <rect width="300" height="400" fill="url(#g3)" rx="2"/>
+            <circle cx="150" cy="155" r="65" fill="#C9B8A4" fill-opacity=".5"/>
+            <ellipse cx="150" cy="310" rx="90" ry="60" fill="#C9B8A4" fill-opacity=".35"/>
+            <text x="150" y="248" text-anchor="middle" fill="#7A9480" fill-opacity=".7" font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2">RITRATTO</text>
+          </svg>
+        </div>
+      </div>
+      <div class="bio-text">
+        <h2 class="section-title">Dott.ssa<br><em>Sara Trovato</em></h2>
+        <p>Sono una psicologa psicoterapeuta specializzata in <strong>Psicoterapia Cognitiva ad indirizzo costruttivista, evolutivo e relazionale</strong>. Svolgo l'attività clinica con adulti, con un interesse specifico per psicosomatica, psicotraumatologia, psicologia dell'emergenza, etnopsichiatria e psicologia delle migrazioni.</p>
+        <p>Ho maturato la mia esperienza clinica nel settore pubblico — nei servizi territoriali di salute mentale del SSN e in enti di ricerca universitaria — nonché nel terzo settore, collaborando con Associazioni e Fondazioni.</p>
+        <p>Ricevo <strong>in presenza a Torino</strong> e <strong>online</strong>.</p>
+
+        <ul class="formation-list">
+          <li><span class="year">2012</span><span>Laurea triennale in Scienze e Tecniche Psicologiche — Università di Firenze</span></li>
+          <li><span class="year">2015</span><span>Laurea magistrale in Scienze della Mente — Università di Torino (110/110 cum laude e menzione d'onore) · Abilitazione all'esercizio della professione</span></li>
+          <li><span class="year">2016</span><span>PhD candidate — Vrije Universiteit Amsterdam (Social Change and Conflict)</span></li>
+          <li><span class="year">2022</span><span>Samot Onlus, Lampedusa — psiconcologia e psicotanatologia</span></li>
+          <li><span class="year">2025</span><span>Specializzazione in Psicoterapia Cognitiva — ISEC, Catania</span></li>
+          <li><span class="year">2026</span><span>Master II livello in Psicosomatica «REMind the Body» — Università di Torino</span></li>
+          <li><span class="year">—</span><span>Iscritta all'Albo OPRS · Formazione EMDR II livello</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROCCIO -->
+  <section id="approccio">
+    <div class="approccio-inner reveal">
+      <div class="section-label">Il mio approccio</div>
+      <h2 class="section-title">La terapia come<br><em>incontro tra soggettività</em></h2>
+
+      <blockquote>
+        «Ma se è tutto qui il male! Nelle parole! Abbiamo tutti dentro un mondo di cose; ciascuno un suo mondo di cose! E come possiamo intenderci…»
+        <cite>Luigi Pirandello, Sei personaggi in cerca d'autore (1921)</cite>
+      </blockquote>
+
+      <p style="font-size:.97rem;font-weight:300;line-height:1.9;color:var(--charcoal);max-width:680px;">
+        Inserisco in una cornice costruttivista metodi e tecniche di intervento <em>evidence-based</em> della tradizione cognitivista, integrandole con tecniche di "terza ondata" — mindfulness, ACT, CFT, Schematherapy — e con l'EMDR (training di II livello).
+      </p>
+      <p style="font-size:.97rem;font-weight:300;line-height:1.9;color:var(--charcoal);max-width:680px;margin-top:1.2rem;">
+        Non lavoro <em>sul</em> paziente ma <strong>con</strong> il paziente, parte attiva del processo terapeutico. Ciascuno porta una propria unicità, e su quella ritaglio sartorialmente le strategie di intervento.
+      </p>
+
+      <div class="approccio-pillars reveal reveal-d1">
+        <div class="pillar">
+          <h4>Approccio costruttivista</h4>
+          <p>Non esiste un'unica realtà oggettiva: ognuno costruisce la propria. La terapia aiuta a riconoscere i propri costrutti e a trasformarli.</p>
+        </div>
+        <div class="pillar">
+          <h4>Relazione terapeutica</h4>
+          <p>«Di relazioni ci si ammala, di relazioni si guarisce.» La relazione è lo strumento e lo spazio in cui sperimentare una nuova consapevolezza.</p>
+        </div>
+        <div class="pillar">
+          <h4>Approccio sartoriale</h4>
+          <p>A ciascuno la sua terapia. Le tecniche sono strumenti, non ricette: ogni percorso è costruito attorno alla singola persona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIZI / AREE -->
+  <section id="servizi">
+    <div class="section-label reveal">Servizi</div>
+    <h2 class="section-title reveal">Aree di <em>intervento</em></h2>
+
+    <div class="aree-grid">
+      <div class="area-card reveal reveal-d1">
+        <div class="area-dot"></div>
+        <h4>Disturbi d'ansia</h4>
+        <p>Fobie specifiche, attacchi di panico, Disturbo Ossessivo-Compulsivo e disturbi d'ansia generalizzata.</p>
+      </div>
+      <div class="area-card reveal reveal-d2">
+        <div class="area-dot"></div>
+        <h4>Nutrizione e alimentazione</h4>
+        <p>Anoressia nervosa, bulimia nervosa, binge eating disorder e difficoltà legate al rapporto con il corpo.</p>
+      </div>
+      <div class="area-card reveal reveal-d3">
+        <div class="area-dot"></div>
+        <h4>Disturbi dell'umore</h4>
+        <p>Depressione, stati disforici, vissuti di vuoto e difficoltà nel trovare senso e direzione nella propria vita.</p>
+      </div>
+      <div class="area-card reveal reveal-d1">
+        <div class="area-dot"></div>
+        <h4>Trauma e PTSD</h4>
+        <p>Elaborazione di esperienze traumatiche, eventi stressanti acuti e cronici, con approccio integrato EMDR.</p>
+      </div>
+      <div class="area-card reveal reveal-d2">
+        <div class="area-dot"></div>
+        <h4>Momenti di vita e transizioni</h4>
+        <p>Lutti, separazioni, cambiamenti lavorativi, trasferimenti e altri passaggi che richiedono elaborazione e adattamento.</p>
+      </div>
+      <div class="area-card reveal reveal-d3">
+        <div class="area-dot"></div>
+        <h4>Relazioni e identità</h4>
+        <p>Difficoltà relazionali, autostima, rabbia, crescita personale e questioni legate all'identità e all'autopercezione.</p>
+      </div>
+    </div>
+
+    <!-- Modalità -->
+    <div style="margin-top:5rem;">
+      <div class="section-label reveal">Come lavoro</div>
+      <div class="modalita-grid reveal">
+        <div class="modalita-card">
+          <div class="modalita-icon">🏢</div>
+          <h3>In presenza</h3>
+          <p>Le sedute in studio si svolgono a <strong>Torino</strong>, in un ambiente riservato e accogliente, pensato per favorire il senso di sicurezza e continuità del percorso.</p>
+        </div>
+        <div class="modalita-card">
+          <div class="modalita-icon">💻</div>
+          <h3>Online</h3>
+          <p>La psicoterapia online garantisce la stessa qualità della presenza fisica, con la flessibilità di poter lavorare da qualsiasi luogo. Ideale per chi vive fuori Torino o ha difficoltà di spostamento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING CONTACT BUTTONS -->
+  <div class="floating-contacts">
+    <a class="float-btn float-wa" href="https://wa.me/393896437358" target="_blank" rel="noopener" title="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </a>
+    <a class="float-btn float-tel" href="tel:+393896437358" title="Chiama">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.82 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    <a class="float-btn float-mail" href="mailto:dott.saratrovato@gmail.com" title="Email">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+  </div>
+
+  <!-- CONTATTI -->
+  <section id="contatti">
+    <div class="section-label">Contatti</div>
+    <h2 class="section-title">Inizia il tuo<br><em>percorso</em></h2>
+    <p class="contact-sub">Il primo passo è un semplice contatto. Scrivimi, chiamami o inviami un messaggio: rispondo entro 48 ore per concordare un primo colloquio conoscitivo.</p>
+
+    <div class="contatti-grid">
+
+      <!-- COLONNA SINISTRA: info + mappa -->
+      <div>
+        <div class="contatti-info-card">
+          <h3>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Informazioni di contatto
+          </h3>
+
+          <a class="info-row" href="tel:+393896437358">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.82 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div class="info-row-text">
+              <span class="info-row-label">Telefono / WhatsApp</span>
+              <span class="info-row-value">389 643 7358</span>
+            </div>
+          </a>
+
+          <a class="info-row" href="mailto:dott.saratrovato@gmail.com">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div class="info-row-text">
+              <span class="info-row-label">Email</span>
+              <span class="info-row-value">dott.saratrovato@gmail.com</span>
+            </div>
+          </a>
+
+          <div class="info-row">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="info-row-text">
+              <span class="info-row-label">Studio</span>
+              <span class="info-row-value">Via Maria Vittoria 40 Bis<br>10123 Torino (TO)</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div class="info-row-text">
+              <span class="info-row-label">Disponibilità</span>
+              <span class="info-row-value">Su appuntamento</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAPPA -->
+        <div style="margin-top:1.5rem;">
+          <div class="map-label">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Dove trovarmi
+          </div>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=7.687%2C45.060%2C7.697%2C45.070&layer=mapnik&marker=45.0650343%2C7.6922580"
+              title="Studio Via Maria Vittoria 40 Bis, 10123 Torino (TO)"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLONNA DESTRA: form -->
+      <div class="contatti-form-card">
+        <h3>
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Scrivimi
+        </h3>
+        <p class="form-sub">Compila il modulo per inviarmi un messaggio. Rispondo entro 48 ore in modo riservato e professionale.</p>
+
+        <div id="formWrap">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-nome">Nome</label>
+              <input type="text" id="f-nome" placeholder="Il tuo nome" autocomplete="given-name">
+            </div>
+            <div class="form-field">
+              <label for="f-cognome">Cognome</label>
+              <input type="text" id="f-cognome" placeholder="Il tuo cognome" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" placeholder="tua@email.it" autocomplete="email">
+          </div>
+          <div class="form-field">
+            <label for="f-modalita">Modalità preferita</label>
+            <select id="f-modalita" style="color:rgba(247,243,237,.8);">
+              <option value="" style="background:#2A2A28;">— seleziona —</option>
+              <option value="presenza" style="background:#2A2A28;">In presenza (Torino)</option>
+              <option value="online" style="background:#2A2A28;">Online</option>
+              <option value="entrambe" style="background:#2A2A28;">Entrambe</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="f-msg">Messaggio</label>
+            <textarea id="f-msg" placeholder="Raccontami brevemente come posso aiutarti…"></textarea>
+          </div>
+          <button class="btn-submit" onclick="submitForm()">
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Invia messaggio
+          </button>
+          <p class="form-privacy">🔒 Rispetto la tua privacy. I tuoi dati non saranno condivisi con terze parti.</p>
+        </div>
+        <div class="form-success" id="formSuccess">
+          Grazie per avermi scritto.<br>Ti risponderò entro 48 ore.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Dott.ssa Sara Trovato · P.IVA 01316840865 · Iscritta all'Albo OPRS</p>
+    <div style="display:flex;gap:2rem;">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookie.html">Cookie Policy</a>
+      <a href="#" id="manageConsent" style="cursor:pointer;text-decoration:underline;">Gestisci cookie</a>
+    </div>
+  </footer>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookieBanner" class="cookie-banner">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <h3>🍪 Rispetto della tua privacy</h3>
+        <p>Utilizziamo i cookie per migliorare la tua esperienza. Alcuni sono essenziali, altri per analisi e prestazioni.</p>
+      </div>
+      <div class="cookie-banner-buttons">
+        <button id="acceptAllBtn" class="cookie-btn cookie-btn-primary">Accetta tutto</button>
+        <button id="rejectBtn" class="cookie-btn cookie-btn-secondary">Rifiuta</button>
+        <button id="customizeBtn" class="cookie-btn cookie-btn-tertiary">Personalizza</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COOKIE CUSTOMIZATION MODAL -->
+  <div id="cookieModal" class="cookie-modal">
+    <div class="cookie-modal-content">
+      <div class="cookie-modal-header">
+        <h2>Preferenze cookie</h2>
+        <button class="cookie-modal-close" id="closeModal">&times;</button>
+      </div>
+      <div class="cookie-modal-body">
+        <div class="cookie-category">
+          <label class="cookie-checkbox">
+            <input type="checkbox" id="necessaryCheckbox" checked disabled>
+            <span class="checkbox-label">
+              <strong>Cookie essenziali</strong>
+              <small>Necessari per il funzionamento del sito. Sempre attivi.</small>
+            </span>
+          </label>
+        </div>
+        <div class="cookie-category">
+          <label class="cookie-checkbox">
+            <input type="checkbox" id="analyticsCheckbox">
+            <span class="checkbox-label">
+              <strong>Cookie analitici</strong>
+              <small>Ci aiutano a comprendere come usi il sito e migliorare l'esperienza.</small>
+            </span>
+          </label>
+        </div>
+        <div class="cookie-category">
+          <label class="cookie-checkbox">
+            <input type="checkbox" id="performanceCheckbox">
+            <span class="checkbox-label">
+              <strong>Cookie di performance</strong>
+              <small>Monitorano le prestazioni e l'efficienza del sito.</small>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="cookie-modal-footer">
+        <button class="btn-submit" id="savePreferences">Salva preferenze</button>
+        <a href="privacy.html" style="text-align: center; display: block; margin-top: 1rem; font-size: 0.9rem;">Leggi la Privacy Policy</a>
+        <a href="cookie.html" style="text-align: center; display: block; margin-top: 0.5rem; font-size: 0.9rem;">Leggi la Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
