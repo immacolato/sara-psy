@@ -120,7 +120,7 @@ function initializeAnalytics() {
   // You can find it in Google Analytics > Admin > Property > Data Streams
   
   if (typeof gtag !== 'undefined') {
-    gtag('config', 'GA_MEASUREMENT_ID', {
+    gtag('config', 'G-8HLDF6GWQG', {
       'anonymize_ip': true,
       'allow_google_signals': true,
       'allow_ad_personalization_signals': false
