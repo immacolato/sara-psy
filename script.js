@@ -144,14 +144,31 @@ function updateGAConsent(preferences) {
 // Check consent on page load
 document.addEventListener('DOMContentLoaded', checkCookieConsent);
 
-// Form pseudo-submit
-function submitForm() {
-  const nome = document.getElementById('f-nome').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const msg = document.getElementById('f-msg').value.trim();
-  if (!nome || !email || !msg) { alert('Per favore compila tutti i campi obbligatori.'); return; }
-  document.getElementById('formWrap').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+// Form submit via Formspree
+const form = document.getElementById('formWrap');
+if (form) {
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso…';
+
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Invia messaggio';
+      alert('Si è verificato un errore. Prova a scrivermi direttamente a dott.saratrovato@gmail.com');
+    }
+  });
 }
 
 // Nav shrink on scroll

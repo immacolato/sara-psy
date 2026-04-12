@@ -432,24 +432,24 @@
         </h3>
         <p class="form-sub">Compila il modulo per inviarmi un messaggio. Rispondo entro 48 ore in modo riservato e professionale.</p>
 
-        <div id="formWrap">
+        <form id="formWrap" action="https://formspree.io/f/mjgjbely" method="POST">
           <div class="form-row">
             <div class="form-field">
               <label for="f-nome">Nome</label>
-              <input type="text" id="f-nome" placeholder="Il tuo nome" autocomplete="given-name">
+              <input type="text" id="f-nome" name="nome" placeholder="Il tuo nome" autocomplete="given-name" required>
             </div>
             <div class="form-field">
               <label for="f-cognome">Cognome</label>
-              <input type="text" id="f-cognome" placeholder="Il tuo cognome" autocomplete="family-name">
+              <input type="text" id="f-cognome" name="cognome" placeholder="Il tuo cognome" autocomplete="family-name">
             </div>
           </div>
           <div class="form-field">
             <label for="f-email">Email</label>
-            <input type="email" id="f-email" placeholder="tua@email.it" autocomplete="email">
+            <input type="email" id="f-email" name="email" placeholder="tua@email.it" autocomplete="email" required>
           </div>
           <div class="form-field">
             <label for="f-modalita">Modalità preferita</label>
-            <select id="f-modalita" style="color:rgba(247,243,237,.8);">
+            <select id="f-modalita" name="modalita" style="color:rgba(247,243,237,.8);">
               <option value="" style="background:#2A2A28;">— seleziona —</option>
               <option value="presenza" style="background:#2A2A28;">In presenza (Torino)</option>
               <option value="online" style="background:#2A2A28;">Online</option>
@@ -458,14 +458,14 @@
           </div>
           <div class="form-field">
             <label for="f-msg">Messaggio</label>
-            <textarea id="f-msg" placeholder="Raccontami brevemente come posso aiutarti…"></textarea>
+            <textarea id="f-msg" name="messaggio" placeholder="Raccontami brevemente come posso aiutarti…" required></textarea>
           </div>
-          <button class="btn-submit" onclick="submitForm()">
+          <button type="submit" class="btn-submit" id="submitBtn">
             <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             Invia messaggio
           </button>
           <p class="form-privacy">🔒 Rispetto la tua privacy. I tuoi dati non saranno condivisi con terze parti.</p>
-        </div>
+        </form>
         <div class="form-success" id="formSuccess">
           Grazie per avermi scritto.<br>Ti risponderò entro 48 ore.
         </div>
