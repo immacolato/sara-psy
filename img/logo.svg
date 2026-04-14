@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530 175" fill="none">
+  <defs>
+    <!-- Rosa: cerchio in alto -->
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbb6d4"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <!-- Verde-giallo: cerchio in basso-sinistra -->
+    <linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bef264"/>
+      <stop offset="50%" stop-color="#84cc16"/>
+      <stop offset="100%" stop-color="#4d7c0f"/>
+    </linearGradient>
+    <!-- Azzurro: cerchio in basso-destra -->
+    <linearGradient id="g3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+    <!-- Filtro morbido per effetto pennello -->
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Trefoil: r=40, triangolo equilatero lato=44, centroide (443,78) -->
+  <!-- Riempitura trasparente per effetto sovrapposizione -->
+  <circle cx="443" cy="53" r="40" fill="url(#g1)" fill-opacity="0.06"/>
+  <circle cx="421" cy="91" r="40" fill="url(#g2)" fill-opacity="0.06"/>
+  <circle cx="465" cy="91" r="40" fill="url(#g3)" fill-opacity="0.06"/>
+  <!-- Stroke dei cerchi con filtro soft -->
+  <circle cx="443" cy="53" r="40" stroke="url(#g1)" stroke-width="3.5" fill="none" opacity="0.9" filter="url(#soft)"/>
+  <circle cx="421" cy="91" r="40" stroke="url(#g2)" stroke-width="3.5" fill="none" opacity="0.9" filter="url(#soft)"/>
+  <circle cx="465" cy="91" r="40" stroke="url(#g3)" stroke-width="3.5" fill="none" opacity="0.9" filter="url(#soft)"/>
+
+  <!-- dott.ssa -->
+  <text x="18" y="78" font-family="Cormorant Garamond,Georgia,serif" font-size="29" font-style="italic" fill="#8a7e76" letter-spacing="0.5">dott.ssa</text>
+  <!-- Sara Trovato -->
+  <text x="18" y="128" font-family="Cormorant Garamond,Georgia,serif" font-size="62" font-weight="500" fill="#2c2825" letter-spacing="0.5">Sara Trovato</text>
+  <!-- Linea separatrice -->
+  <line x1="18" y1="138" x2="322" y2="138" stroke="#d4c5b5" stroke-width="0.7"/>
+  <!-- Psicologa Psicoterapeuta -->
+  <text x="18" y="157" font-family="Cormorant Garamond,Georgia,serif" font-size="14" fill="#9a8c82" letter-spacing="3.5">Psicologa  Psicoterapeuta</text>
+</svg>
