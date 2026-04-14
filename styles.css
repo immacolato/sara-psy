@@ -72,6 +72,12 @@ nav {
 }
 .nav-links a:hover { color: var(--sage-dk); }
 
+/* ─── SCROLL OFFSET (fixed navbar) ─── */
+section[id] { scroll-margin-top: 90px; }
+@media (max-width: 640px) {
+  section[id] { scroll-margin-top: 24px; }
+}
+
 /* ─── HERO ─── */
 .hero {
   min-height: 100vh;
@@ -671,7 +677,7 @@ a.info-row:hover .info-row-value { color: var(--sage-lt); }
 @media (max-width: 640px) {
   nav { padding: .75rem 1.2rem; }
   .nav-links { display: none; }
-  .nav-logo { height: 66px; max-width: none; }
+  .nav-logo { height: 44px; margin-left: -6px; }
   section { padding: 4rem 1.5rem; }
   .hero-text { padding: 6rem 1.5rem 3rem; }
   .aree-grid { grid-template-columns: 1fr; }
@@ -693,22 +699,23 @@ a.info-row:hover .info-row-value { color: var(--sage-lt); }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .2rem;
+    gap: .15rem;
     text-decoration: none;
-    padding: .3rem .5rem;
+    padding: .3rem .35rem;
     color: var(--warm-mid);
   }
   .mobile-nav-item svg {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     color: var(--sage);
   }
   .mobile-nav-item span {
     font-family: 'Cormorant Garamond', serif;
-    font-size: .55rem;
-    letter-spacing: .07em;
+    font-size: .48rem;
+    letter-spacing: .05em;
     text-transform: uppercase;
     color: var(--warm-mid);
+    white-space: nowrap;
   }
   .mobile-nav-item:active svg { color: var(--sage-dk); }
   #scroll-top { bottom: 2rem; }
