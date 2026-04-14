@@ -171,12 +171,15 @@ if (form) {
   });
 }
 
-// Nav shrink on scroll
+// Nav shrink on scroll + scroll-to-top
 const nav = document.querySelector('nav');
+const scrollTopBtn = document.getElementById('scroll-top');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 60) {
     nav.style.padding = window.innerWidth > 640 ? '.9rem 4rem' : '.9rem 1.5rem';
   } else {
     nav.style.padding = window.innerWidth > 640 ? '1.4rem 4rem' : '1rem 1.5rem';
   }
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
 }, { passive: true });
+scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

@@ -355,6 +355,20 @@ section:nth-child(even) .area-card { background: var(--white); }
 }
 .area-card p { font-size: .84rem; font-weight: 300; color: var(--warm-mid); line-height: 1.7; }
 .area-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); margin-bottom: 1rem; }
+.area-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(122, 148, 128, .12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  color: var(--sage);
+  transition: background .3s;
+}
+.area-icon svg { width: 20px; height: 20px; }
+.area-card:hover .area-icon { background: rgba(122, 148, 128, .22); }
 
 /* ─── MODALITÀ ─── */
 .modalita-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -381,6 +395,35 @@ section:nth-child(even) .area-card { background: var(--white); }
 }
 .modalita-card p { font-size: .92rem; font-weight: 300; color: var(--warm-mid); line-height: 1.8; }
 .modalita-icon { font-size: 1.8rem; margin-bottom: 1.2rem; }
+
+/* ─── SCROLL TO TOP ─── */
+#scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--sage);
+  background: var(--cream);
+  color: var(--sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .3s, transform .3s;
+  z-index: 999;
+}
+#scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+#scroll-top:hover { background: rgba(122, 148, 128, .12); }
+#scroll-top svg { width: 18px; height: 18px; }
 
 /* ─── CONTATTI ─── */
 #contatti {
