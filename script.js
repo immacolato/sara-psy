@@ -190,10 +190,10 @@ function setActive(id) {
   mobileItems.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
 }
 
-const observer = new IntersectionObserver((entries) => {
+const navObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) setActive(entry.target.id);
   });
 }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
-sections.forEach(s => observer.observe(s));
+sections.forEach(s => navObserver.observe(s));
