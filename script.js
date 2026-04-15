@@ -175,11 +175,25 @@ if (form) {
 const nav = document.querySelector('nav');
 const scrollTopBtn = document.getElementById('scroll-top');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) {
-    nav.style.padding = window.innerWidth > 640 ? '.9rem 4rem' : '.9rem 1.5rem';
-  } else {
-    nav.style.padding = window.innerWidth > 640 ? '1.4rem 4rem' : '1rem 1.5rem';
-  }
+  nav.classList.toggle('scrolled', window.scrollY > 60);
   scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
 }, { passive: true });
 scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Active nav link via IntersectionObserver
+const sections = document.querySelectorAll('section[id]');
+const desktopLinks = document.querySelectorAll('.nav-links a');
+const mobileItems = document.querySelectorAll('.mobile-nav-item');
+
+function setActive(id) {
+  desktopLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  mobileItems.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) setActive(entry.target.id);
+  });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+sections.forEach(s => observer.observe(s));
