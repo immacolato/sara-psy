@@ -121,6 +121,12 @@ section[id] { scroll-margin-top: 90px; }
   font-style: italic;
   color: var(--sage-dk);
 }
+.hero-name-prefix {
+  font-size: .52em;
+  font-weight: 300;
+  letter-spacing: .04em;
+  color: var(--charcoal);
+}
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.15rem;
