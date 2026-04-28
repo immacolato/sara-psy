@@ -119,10 +119,11 @@ section[id] { scroll-margin-top: 90px; }
 }
 .hero-name em {
   font-style: italic;
+  font-weight: 400;
   color: var(--sage-dk);
 }
 .hero-name-prefix {
-  font-size: .52em;
+  font-size: .72em;
   font-weight: 300;
   letter-spacing: .04em;
   color: var(--charcoal);
@@ -130,7 +131,7 @@ section[id] { scroll-margin-top: 90px; }
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.15rem;
-  font-weight: 400;
+  font-weight: 600;
   font-style: italic;
   color: var(--warm-mid);
   letter-spacing: .03em;
@@ -187,60 +188,13 @@ section[id] { scroll-margin-top: 90px; }
 .hero-visual {
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(145deg, #e8efe9 0%, #ede8df 40%, #e8ddd2 100%);
 }
-.hero-visual::before {
-  content: '';
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(122,148,128,.18) 0%, transparent 70%);
-  top: -80px;
-  right: -80px;
-}
-.hero-visual::after {
-  content: '';
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,169,138,.2) 0%, transparent 70%);
-  bottom: -60px;
-  left: -60px;
-}
-.hero-visual-text {
-  position: relative;
-  z-index: 2;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: clamp(1.15rem, 2vw, 1.5rem);
-  color: var(--charcoal);
-  padding: 3rem;
-  max-width: 380px;
-  line-height: 1.75;
-  text-align: center;
-  border-left: none;
-}
-.hero-visual-text::before {
-  content: '\201C';
+.hero-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
-  font-size: 4rem;
-  line-height: .8;
-  color: var(--sage);
-  margin-bottom: .5rem;
-  font-style: normal;
-}
-.hero-visual-text::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 1.5px;
-  background: var(--sage);
-  margin: 1.5rem auto 0;
 }
 
 /* ─── SECTIONS ─── */
