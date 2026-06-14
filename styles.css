@@ -488,6 +488,30 @@ footer {
 footer p { font-size: .75rem; color: rgba(247,243,237,.3); letter-spacing: .04em; }
 footer a { color: rgba(247,243,237,.4); text-decoration: none; font-size: .75rem; }
 footer a:hover { color: var(--sage-lt); }
+.footer-credit {
+  font-size: .78rem;
+  letter-spacing: .05em;
+  color: rgba(247,243,237,.75);
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.footer-credit span {
+  color: rgba(247,243,237,.6);
+}
+.footer-credit a {
+  color: var(--sage-lt);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color .25s, text-decoration .25s;
+  border-bottom: 1px solid rgba(168,190,168,.3);
+  padding-bottom: 1px;
+}
+.footer-credit a:hover {
+  color: var(--sage);
+  text-decoration: none;
+  border-bottom-color: var(--sage);
+}
 
 /* ─── FLOATING CONTACT BUTTONS ─── */
 .floating-contacts {
