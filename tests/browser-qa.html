@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="it"><meta charset="utf-8"><title>Verifiche locali Sara</title>
+<style>body{font:16px sans-serif;margin:2rem} pre{white-space:pre-wrap} iframe{position:absolute;left:0;top:140px;visibility:hidden;height:800px;border:0} .fail{color:#a00}</style>
+<h1>Verifiche locali Sara</h1><p id="status">Verifiche in corso…</p><pre id="results"></pre>
+<script>
+(async () => {
+ const output = [];
+ function render() { document.querySelector('#results').replaceChildren(...output.map(line=>{const p=document.createElement('p');p.textContent=line;return p;})); }
+ const widths = [320,393,768,1024,1440];
+ for (const page of ['index.html','privacy.html','cookie.html']) {
+  for (const width of widths) {
+   const frame=document.createElement('iframe'); frame.style.width=width+'px';
+   document.body.append(frame);
+   await new Promise(resolve=>{frame.onload=resolve;frame.src=page;});
+   const win=frame.contentWindow, doc=frame.contentDocument;
+   await doc.fonts.ready;
+   await new Promise(resolve=>win.requestAnimationFrame(()=>win.requestAnimationFrame(resolve)));
+   const overflow=doc.documentElement.scrollWidth>win.innerWidth;
+   const header=doc.querySelector('nav').getBoundingClientRect().bottom;
+   const origins=[...new Set(win.performance.getEntriesByType('resource').map(r=>new URL(r.name)).filter(u=>u.protocol==='http:'||u.protocol==='https:').map(u=>u.origin))];
+   const external=origins.filter(o=>o!==location.origin);
+   let details=''; let anchorFail=false;
+   if(page==='index.html') {
+    doc.documentElement.style.scrollBehavior='auto';
+    const target=doc.querySelector('#primo-colloquio');
+    target.scrollIntoView();
+    await new Promise(resolve=>win.requestAnimationFrame(()=>win.requestAnimationFrame(resolve)));
+    const top=target.getBoundingClientRect().top;
+    anchorFail=top<header;
+    details=' contactTop='+Math.round(top)+' header='+Math.round(header);
+   } else {
+    const top=doc.querySelector('h1').getBoundingClientRect().top;
+    anchorFail=top<header;
+    details=' titleTop='+Math.round(top)+' header='+Math.round(header);
+   }
+   output.push((overflow||external.length||anchorFail?'FAIL':'PASS')+' '+page+' '+win.innerWidth+'px / scrollWidth='+doc.documentElement.scrollWidth+details+' external='+JSON.stringify(external));
+   frame.remove();
+   render();
+  }
+ }
+ // A same-origin sandbox without allow-scripts exercises the real no-JS page.
+ const nojs=document.createElement('iframe'); nojs.sandbox='allow-same-origin';nojs.style.width='320px';document.body.append(nojs);
+ await new Promise(resolve=>{nojs.onload=resolve;nojs.src='index.html';});
+ const doc=nojs.contentDocument;
+ const hidden=[...doc.querySelectorAll('.reveal')].filter(el=>nojs.contentWindow.getComputedStyle(el).opacity==='0');
+ output.push((hidden.length?'FAIL':'PASS')+' no-JS content; hidden reveals='+hidden.length);
+ nojs.remove();
+ render();
+ document.querySelector('#status').textContent=output.some(line=>line.startsWith('FAIL'))?'Verifiche con errori':'16 verifiche superate';
+})();
+</script></html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://immacolato.github.io/sara-psy/sitemap.xml
