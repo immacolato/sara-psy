@@ -550,10 +550,11 @@ footer a:hover { color: var(--sage-lt); }
 a.info-row:hover .info-row-value { color: var(--sage-lt); }
 
 .map-wrap {
-  margin-top: 2rem;
+  margin-top: .8rem;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(247,243,237,.1);
+  background: rgba(255,255,255,.05);
 }
 .map-label {
   font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
@@ -690,9 +691,24 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; text-dec
 .direct-contact-buttons { display: flex; flex-wrap: wrap; gap: .8rem; margin: 1.5rem 0; }
 .direct-contact-buttons .btn { width: 100%; min-height: 44px; }
 .contact-note { font-size: .9rem; color: rgba(247,243,237,.8); margin-top: 1rem; }
-.contact-note a, .map-link a { color: var(--cream); text-underline-offset: .2em; }
-.map-link { padding: 1.2rem; text-align: left; }
-.map-link a { display: inline-flex; align-items: center; min-height: 44px; }
+.contact-note a, .map-details a { color: var(--cream); text-underline-offset: .2em; }
+.map-preview { display: block; position: relative; overflow: hidden; aspect-ratio: 1751 / 989; }
+.map-preview img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.map-preview:focus-visible { outline: 3px solid var(--cream); outline-offset: -5px; }
+.map-marker {
+  position: absolute; left: 57%; top: 50%; width: 40px; height: 40px;
+  transform: translate(-50%, -100%); fill: var(--sage-dk); stroke: white;
+  stroke-width: 1.5; filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
+}
+.map-marker circle { fill: white; stroke: none; }
+.map-preview-caption {
+  position: absolute; left: .8rem; bottom: .8rem; padding: .35rem .6rem;
+  border-radius: 4px; color: var(--cream); background: rgba(30,30,28,.9);
+  font-size: .8rem; line-height: 1.3;
+}
+.map-details { display: flex; flex-direction: column; align-items: flex-start; padding: .6rem .9rem .8rem; }
+.map-open { display: inline-flex; align-items: center; min-height: 44px; font-size: .9rem; }
+.map-attribution { font-size: .72rem; line-height: 1.5; color: var(--cream); }
 .policy-content { overflow-wrap: anywhere; }
 .policy-content a { color: var(--sage-dk); text-underline-offset: .2em; }
 .cookie-table { table-layout: fixed; }

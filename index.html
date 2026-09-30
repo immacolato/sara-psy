@@ -321,8 +321,16 @@
             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Dove trovarmi
           </div>
-          <div class="map-wrap map-link">
-            <a href="https://www.openstreetmap.org/?mlat=45.0650343&amp;mlon=7.6922580#map=17/45.0650343/7.6922580" target="_blank" rel="noopener noreferrer">Apri la mappa su OpenStreetMap <span class="sr-only">(si apre in una nuova scheda)</span></a>
+          <div class="map-wrap">
+            <a class="map-preview" href="https://www.openstreetmap.org/?mlat=45.0650343&amp;mlon=7.6922580#map=17/45.0650343/7.6922580" target="_blank" rel="noopener noreferrer" aria-label="Apri la mappa interattiva dello studio su OpenStreetMap (nuova scheda)">
+              <img src="img/mappa-studio.webp" alt="Mappa statica delle vie attorno allo studio in Via Maria Vittoria 40 Bis, Torino" width="1751" height="989" loading="lazy" decoding="async" />
+              <svg class="map-marker" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="map-preview-caption" aria-hidden="true">Via Maria Vittoria 40 Bis</span>
+            </a>
+            <div class="map-details">
+              <a class="map-open" href="https://www.openstreetmap.org/?mlat=45.0650343&amp;mlon=7.6922580#map=17/45.0650343/7.6922580" target="_blank" rel="noopener noreferrer">Apri la mappa interattiva <span class="sr-only">(si apre in una nuova scheda)</span></a>
+              <span class="map-attribution">Mappa © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> · dati <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener noreferrer">ODbL</a></span>
+            </div>
           </div>
         </div>
       </div>
