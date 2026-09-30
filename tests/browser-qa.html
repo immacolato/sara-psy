@@ -5,7 +5,7 @@
 (async () => {
  const output = [];
  function render() { document.querySelector('#results').replaceChildren(...output.map(line=>{const p=document.createElement('p');p.textContent=line;return p;})); }
- const widths = [320,393,768,1024,1440];
+ const widths = [320,360,393,768,1024,1440];
  for (const page of ['index.html','privacy.html','cookie.html']) {
   for (const width of widths) {
    const frame=document.createElement('iframe'); frame.style.width=width+'px';
@@ -18,7 +18,7 @@
    const header=doc.querySelector('nav').getBoundingClientRect().bottom;
    const origins=[...new Set(win.performance.getEntriesByType('resource').map(r=>new URL(r.name)).filter(u=>u.protocol==='http:'||u.protocol==='https:').map(u=>u.origin))];
    const external=origins.filter(o=>o!==location.origin);
-   let details=''; let anchorFail=false;
+   let details=''; let anchorFail=false; let cardOverflow=false;
    if(page==='index.html') {
     doc.documentElement.style.scrollBehavior='auto';
     const target=doc.querySelector('#primo-colloquio');
@@ -27,12 +27,23 @@
     const top=target.getBoundingClientRect().top;
     anchorFail=top<header;
     details=' contactTop='+Math.round(top)+' header='+Math.round(header);
+    for (const card of doc.querySelectorAll('.contatti-info-card, .contatti-direct-card')) {
+     const bounds=card.getBoundingClientRect();
+     const item=[...card.querySelectorAll('a, button')].find(el=>{
+      const rect=el.getBoundingClientRect();
+      return rect.left<bounds.left-1 || rect.right>bounds.right+1;
+     });
+     if(item) {
+      cardOverflow=true;
+      details+=' escapingCard='+item.textContent.trim().replace(/\s+/g,' ');
+     }
+    }
    } else {
     const top=doc.querySelector('h1').getBoundingClientRect().top;
     anchorFail=top<header;
     details=' titleTop='+Math.round(top)+' header='+Math.round(header);
    }
-   output.push((overflow||external.length||anchorFail?'FAIL':'PASS')+' '+page+' '+win.innerWidth+'px / scrollWidth='+doc.documentElement.scrollWidth+details+' external='+JSON.stringify(external));
+   output.push((overflow||external.length||anchorFail||cardOverflow?'FAIL':'PASS')+' '+page+' '+win.innerWidth+'px / scrollWidth='+doc.documentElement.scrollWidth+details+' external='+JSON.stringify(external));
    frame.remove();
    render();
   }
@@ -45,6 +56,6 @@
  output.push((hidden.length?'FAIL':'PASS')+' no-JS content; hidden reveals='+hidden.length);
  nojs.remove();
  render();
- document.querySelector('#status').textContent=output.some(line=>line.startsWith('FAIL'))?'Verifiche con errori':'16 verifiche superate';
+ document.querySelector('#status').textContent=output.some(line=>line.startsWith('FAIL'))?'Verifiche con errori':output.length+' verifiche superate';
 })();
 </script></html>
